@@ -13,7 +13,7 @@ const Callback = () => {
       try {
         const queryParams = new URLSearchParams(window.location.search);
         const code = queryParams.get('code');
-        const response = await axios.get(`http://localhost:3001/callback?code=${code}`);
+        const response = await axios.get(`/api/callback?code=${code}`);
         if (response.data && response.data.accessToken) {
             setAccessToken(response.data.accessToken);
           }

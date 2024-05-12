@@ -6,7 +6,7 @@ const Home = () => {
 
   const authenticateWithSpotify = async () => {
     try { 
-      const response = await axios.get(`http://localhost:3001/login`);
+      const response = await axios.get(`./api/login`);
       const authUrl = response.data.authUrl; 
       window.location.href = authUrl;
     } catch (error) {

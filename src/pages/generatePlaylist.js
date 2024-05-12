@@ -5,8 +5,9 @@ import styles from './generatePlaylist.module.css';
 
 const GeneratePlaylist = () => {
   const [topSongs, setTopSongs] = useState([]);
+  const [playlistID, setplaylistID] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('')
+  const [addedSongs, setAddedSongs] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -15,8 +16,10 @@ const GeneratePlaylist = () => {
   const fetchData = async () => {
     try {
       setLoading(true); 
-      const response = await axios.get('http://localhost:3001/generatePlaylist');
-      setTopSongs(response.data);
+      const Songresponse = await axios.get('/api/recommendedSongs');
+      setTopSongs(Songresponse.data.tracks);
+      const Playlistresponse = await axios.get('/api/playlist');
+      setplaylistID(Playlistresponse.data);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -24,11 +27,12 @@ const GeneratePlaylist = () => {
     }
   };
 
-  const handleAddPlaylist = async () => {
+  const handleRefresh = async() => {
     try {
       setLoading(true); 
-      const response = await axios.post('http://localhost:3001/createPlaylist');
-      setMessage(response.data.message); 
+      const Songresponse = await axios.get('/api/recommendedSongs');
+      setTopSongs(Songresponse.data.tracks);
+      console.log(playlistID);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -36,22 +40,36 @@ const GeneratePlaylist = () => {
     }
   };
 
-  const handleRefresh = () => {
-    fetchData();
+  const handleAdd = async (song) => {
+    const songTitle = song.title;
+    const songURI = song.uri;
+    setAddedSongs([...addedSongs, songTitle]);
+    try {
+      await axios.post('/api/addSong', { songURI, playlistID });;
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
     <div>
       <h1 className={styles['header']}>Recommended Songs</h1>
       <div className={styles['button-container']}>
-        <button onClick={handleAddPlaylist} className={styles['button']}>Create + Add To Playlist</button>
+      <a href="/finish" className={styles['button']}>Finish</a>
         <button onClick={handleRefresh} className={styles['button']}>Refresh</button>
       </div>
+      <div>
+            <h2 className={styles['header']}>Added Songs</h2>
+            <ul>
+              {addedSongs.map((song, index) => (
+                <li key={index}>{song}</li>
+              ))}
+            </ul>
+          </div>
       {loading ? (
         <p className={styles['message']}>Loading...</p>
       ) : (
         <>
-          <p className={styles['message']}>{message}</p>
           <ul style={{ listStyleType: 'none', padding: 0 }}>
             {topSongs.map((song, index) => (
               <li key={index}>
@@ -59,6 +77,7 @@ const GeneratePlaylist = () => {
                   title={song.title}
                   artist={song.artist}
                   albumImageUrl={song.albumImageUrl}
+                  onAdd={() => handleAdd(song)}
                 />
               </li>
             ))}
