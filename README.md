@@ -21,7 +21,7 @@ The layout of the application is designed to be intuitive and responsive, and ad
 ## Purpose
 The purpose of this app is to provide users with a convenient tool for curating personalized playlists effortlessly. By leveraging Spotify's external APIs, the application delivers tailored song recommendations and playlist generation capabilities, allowing the user to customize their listening habits.
 
-### Features
+## Features
 Song Recommendations: Utilizes Spotify's external API to suggest songs based on user preferences.
 Playlist Generation: Allows users to generate custom playlists tailored to their music tastes.
 Responsive Design: Ensures that the application looks good and functions well on multiple screen sizes and devices.
@@ -30,11 +30,11 @@ Responsive Design: Ensures that the application looks good and functions well on
 
 The application uses state management techniques, such as React's useState and useEffect hooks, to keep track of user interactions and data retreived from the API.
 
-## Data Sources
+### Data Sources
 
 The application fetches additional data from the Spotify API to access user playlists, top tracks, and artist information. Specifically, it takes 20 of the users top songs and 20 of the users top artists, randomly chooses 2 of each, and generates recommendations based on those four criteria. 
 
-## User Authentication 
+### User Authentication 
 
-This app uses the Authorization Code flow for user authenication on the back-end to ensure the safety of important variables. The [Spotify WebAPI Documentation](https://developer.spotify.com/documentation/web-api) was used as reference during develoopment. 
+This app uses the Authorization Code flow for user authenication on the back-end to ensure the safety of important variables. The [Spotify WebAPI Documentation](https://developer.spotify.com/documentation/web-api) was used as reference during development. 
 
