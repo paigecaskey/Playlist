@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,100..900;1,100..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inconsolata:wght@200..900&family=Jersey+10&family=Jersey+20&family=Micro+5&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet');
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet');
-@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet');
 
 :root {
   --header-font-size: calc(4px + 2vmin);
