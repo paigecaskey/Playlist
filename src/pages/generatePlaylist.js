@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import axios from 'axios';
 import SongCard from '../components/SongCard';
 import styles from './generatePlaylist.module.css';
@@ -32,7 +33,6 @@ const GeneratePlaylist = () => {
       setLoading(true); 
       const Songresponse = await axios.get('/api/recommendedSongs');
       setTopSongs(Songresponse.data.tracks);
-      console.log(playlistID);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -55,7 +55,9 @@ const GeneratePlaylist = () => {
     <div>
       <h1 className={styles['header']}>Recommended Songs</h1>
       <div className={styles['button-container']}>
-      <a href="/finish" className={styles['button']}>Finish</a>
+        <Link href="/finish">
+          <button className={styles['button']}>Finish</button>
+        </Link>
         <button onClick={handleRefresh} className={styles['button']}>Refresh</button>
       </div>
       <div>
