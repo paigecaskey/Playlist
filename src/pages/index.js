@@ -16,6 +16,7 @@ const Home = () => {
 
   return (
     <div className={styles['button-container']}>
+      <h1 className={styles['header']}>Spotify Playlist Generator</h1>
       <button onClick={authenticateWithSpotify} className={styles['button']}>Authenticate With Spotify</button>
     </div>
   );
