@@ -30,6 +30,12 @@
     font-size: 15px;
     cursor: pointer;
     border-radius: 15px;
+    border: none;
+ }
+
+ .button2:hover{
+    background-color: var(--tertiary-color);
+    border: 4px solid #e1d9b4;
  }
 
 .header{
