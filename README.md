@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spotify Playlist Generator
 
-## Getting Started
+## Deployment Hosted by Netlify: https://playlistgenerator2.netlify.app
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This playlist generator is a web application designed to help users create customized playlists based on their music preferences and recommendations. The application offers features to recommend songs, generate a playlist, and allows the user to manage music selections seamlessly.
+** Because the app is still in development mode through Spotify, only users added through the app's settings can currently use its functionality **
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design Principles
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Color Palette
+The color palette was choosen using [coolors]((https://coolors.co)) in order to form a cohesive and clean design. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Fonts
+The primary font used in the application was choosen from [Google Fonts](https://fonts.google.com/specimen/Montserrat?query=montserrat) for its readability and modern appearance, with fallback options for cross-browser compatibility.
 
-## Learn More
+### Layout
+The layout of the application is designed to be intuitive and responsive, and adapts to various screen sizes using media queries.
 
-To learn more about Next.js, take a look at the following resources:
+## Purpose
+The purpose of this app is to provide users with a convenient tool for curating personalized playlists effortlessly. By leveraging Spotify's external APIs, the application delivers tailored song recommendations and playlist generation capabilities, allowing the user to customize their listening habits.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Features
+Song Recommendations: Utilizes Spotify's external API to suggest songs based on user preferences.
+Playlist Generation: Allows users to generate custom playlists tailored to their music tastes.
+Responsive Design: Ensures that the application looks good and functions well on multiple screen sizes and devices.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### State Management
 
-## Deploy on Vercel
+The application uses state management techniques, such as React's useState and useEffect hooks, to keep track of user interactions and data retreived from the API.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Data Sources
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The application fetches additional data from the Spotify API to access user playlists, top tracks, and artist information. Specifically, it takes 20 of the users top songs and 20 of the users top artists, randomly chooses 2 of each, and generates recommendations based on those four criteria. 
+
+## User Authentication 
+
+This app uses the Authorization Code flow for user authenication on the back-end to ensure the safety of important variables. The [Spotify WebAPI Documentation](https://developer.spotify.com/documentation/web-api) was used as reference during develoopment. 
+
